@@ -5,11 +5,17 @@ import '../models/place.dart' show PlaceLocation;
 
 class MapScreen extends StatefulWidget {
   final PlaceLocation initialLocation;
-  final bool isSelecting;//check read-only map
+  final bool isSelecting;
+  final double latitude, longitude;
+
+  //check read-only map
   MapScreen(
-      {this.initialLocation = const PlaceLocation(latitude: 37.422, longitude: -122.084),
+      {this.initialLocation =
+          const PlaceLocation(latitude: 37.422, longitude: -122.084),
       this.isSelecting = false,
-      this.latitude,this.longitude});
+      this.latitude,
+      this.longitude});
+
   @override
   _MapScreenState createState() => _MapScreenState();
 }

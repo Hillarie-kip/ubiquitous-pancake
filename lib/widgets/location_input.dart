@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 import '../helpers/location_helper.dart';
-
 import '../screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
@@ -29,9 +28,11 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _getCurrentUserLocation() async {
     try {
       final locationData = await Location().getLocation();
+      print(locationData.latitude);
       _showPreview(locationData.latitude, locationData.longitude);
       widget.onSelectPlace(locationData.latitude, locationData.longitude);
     } catch (error) {
+      print(error);
       return;
     }
   }
@@ -40,7 +41,11 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _selectOnMap() async {
     //pass back a pickedlocation
 
-    final selectedLocation = await Navigator.of(context).push<LatLng>(MaterialPageRoute(builder: (ctx) => MapScreen(isSelecting: true,)));
+    final selectedLocation =
+        await Navigator.of(context).push<LatLng>(MaterialPageRoute(
+            builder: (ctx) => MapScreen(
+                  isSelecting: true,
+                )));
     if (selectedLocation == null) {
       return;
     }

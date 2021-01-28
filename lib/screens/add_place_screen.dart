@@ -1,15 +1,16 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/places.dart';
 import '../models/place.dart' show PlaceLocation;
-
+import '../providers/places.dart';
 import "../widgets/image_input.dart";
 import '../widgets/location_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = "/add-place";
+
   @override
   _AddPlaceScreenState createState() => _AddPlaceScreenState();
 }
